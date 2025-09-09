@@ -1,13 +1,39 @@
-%A.1
+% %A.1
+% 
+% t = (-2:2);  %from -2 to 2
+% f = @(t) exp(-t).*cos(2*pi*t);  %f(t)
+% plot(t,f(t)); 
+% xlabel('t');
+% ylabel('f(t)');
+% grid;
+% 
+% t = (-2:0.01:2); %from -2 to 2 in increments of 0.01
+% f = @(t) exp(-t).*cos(2*pi*t); %f(t)
+% plot(t,f(t));
+% xlabel('t');
+% ylabel('f(t)');
+% grid;
+% 
+% %A.2
+% 
+% t = (-2:2);
+% f = @(t) exp(-t);
+% plot(t, f(t));
+% xlabel('t');
+% ylabel('f(t)');
+% grid;
 
-t = (-2:2);  %from -2 to 2
-f = @(t) exp(-t).*cos(2*pi*t);  %f(t)
-plot(t,f(t)); 
+%A.3
+%they are identitcal due to the large step size that was set for these 2
+%graphs. All the graphs are decreasing exponentially.
 
-t = (-2:0.01:2); %from -2 to 2 in increments of 0.01
-f = @(t) exp(-t).*cos(2*pi*t); %f(t)
-plot(t,f(t));
+%B.1
 
-%A.2
-
-t = 
+t = (-1:2);  %from -2 to 2
+u = @(t) 1.0.*((-1<=t)&t<=2); %makes unit step function
+u_tminus1 = heaviside(t-1);
+p = @(t) u_t-u_tminus1;  %f(t)
+plot(t,p(t)); 
+xlabel('t');
+ylabel('p(t)');
+grid;

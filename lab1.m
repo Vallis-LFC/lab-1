@@ -28,3 +28,12 @@ grid;
 %graphs. All the graphs are decreasing exponentially.
 
 %B.1
+
+t = (-1:0.01:2);  %from -2 to 2
+u = @(t) 1.0.*((-1<=t)&(t<=2)); %makes unit step function
+p = @(t) 1.0.*((t>=0)&(t<1));  %f(t)
+plot(t,p(t)); 
+xlabel('t');
+ylabel('p(t)');
+axis([-1 2 -.1 1.1])
+grid;
