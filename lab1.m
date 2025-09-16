@@ -5,6 +5,7 @@
 % plot(t,f(t)); 
 % xlabel('t');
 % ylabel('f(t)');
+% title("A.1 P1");
 % grid;
 % 
 % t = (-2:0.01:2); %from -2 to 2 in increments of 0.01
@@ -13,6 +14,7 @@
 % xlabel('t');
 % ylabel('f(t)');
 % yticks([-5 0 5 10]);
+% title("A.1 P2");
 % grid;
 % 
 % %A.2
@@ -22,6 +24,7 @@
 % plot(t, f(t));
 % xlabel('t');
 % ylabel('f(t)');
+% title("A.2");
 % grid;
 % 
 % %A.3
@@ -36,6 +39,7 @@
 % plot(t,p(t)); 
 % xlabel('t');
 % ylabel('p(t)');
+% title("B.1");
 % axis([-1 2 -.1 1.1])
 % yticks([0 0.5 1]);
 % grid;
@@ -52,43 +56,88 @@
 % xlabel('t');
 % ylabel('r(t)');
 % ylabel('n(t)');
+% title("B.2");
 % axis([-1 2 -.1 1.1])
 % yticks([0 0.5 1]);
 % grid;
 
-%B.3
-t = (-2:0.01:2);  %from -2 to 2
-u = @(t) 1.0.*((-1<=t)&(t<=2)); %makes unit step function
-p = @(t) 1.0.*((t>=0)&(t<1));  %f(t)
-r = @(t) t.*p(t);
-n = @(t) r(t)+r(-t+2);
-
-n1 = @(t) n(t.*0.5);
-n2 = @(t) n1(t+0.5);
-plot(t,n1(t),'-k',t,n2(t),':k'); %plots n1(t) and dotted n2(t)
-xlabel('t');
-ylabel('n1(t) & n2(t)');
-axis([-1 2 -.1 1.1])
-yticks([0 0.5 1]);
-grid;
-
-%B.4
-t = (-2:0.01:2);  %from -2 to 2
-u = @(t) 1.0.*((-1<=t)&(t<=2)); %makes unit step function
-p = @(t) 1.0.*((t>=0)&(t<1));  %f(t)
-r = @(t) t.*p(t);
-n = @(t) r(t)+r(-t+2);
-
-n3 = @(t) n(t+0.25);
-n4 = @(t) n3(0.5.*t);
-plot(t,n3(t),'-k',t,n4(t),':k'); %plots n3(t) and dotted n4(t)
-xlabel('t');
-ylabel('n3(t) & n4(t)');
-axis([-1 2 -.1 1.1])
-yticks([0 0.5 1]);
-grid;
+% %B.3
+% t = (-2:0.01:2);  %from -2 to 2
+% u = @(t) 1.0.*((-1<=t)&(t<=2)); %makes unit step function
+% p = @(t) 1.0.*((t>=0)&(t<1));  %f(t)
+% r = @(t) t.*p(t);
+% n = @(t) r(t)+r(-t+2);
+% 
+% n1 = @(t) n(t.*0.5);
+% n2 = @(t) n1(t+0.5);
+% plot(t,n1(t)); hold on %plots n1(t) and n2(t)
+% plot(t,n2(t));
+% xlabel('t');
+% ylabel('n1(t) & n2(t)');
+% title("B.3");
+% axis([-1 2 -.1 1.1])
+% yticks([0 0.5 1]);
+% grid;
+% 
+% %B.4
+% t = (-2:0.01:2);  %from -2 to 2
+% u = @(t) 1.0.*((-1<=t)&(t<=2)); %makes unit step function
+% p = @(t) 1.0.*((t>=0)&(t<1));  %f(t)
+% r = @(t) t.*p(t);
+% n = @(t) r(t)+r(-t+2);
+% 
+% n3 = @(t) n(t+0.25);
+% n4 = @(t) n3(0.5.*t);
+% plot(t,n3(t)); hold on
+% plot(t,n4(t)); %plots n3(t) and dotted n4(t)
+% xlabel('t');
+% ylabel('n3(t) & n4(t)');
+% axis([-1 2 -.1 1.1])
+% yticks([0 0.5 1]);
+% grid;
 
 %B.5
 %they produce the same graph (maybe add more explaination)
 
 %C.1
+% t = (-2:0.01:2);  %from -2 to 2
+% u = @(t) 1.0.*((-1<=t)&(t<=2)); %makes unit step function
+% f = @(t) exp(-2*t).*cos(4*pi*t);
+% g = @(t) f(t).*u(t);
+% plot(t, g(2*t+1));
+% xlabel('t');
+% ylabel('g(t)=f(t)*u(t)');
+% grid;
+
+%C.2
+t = (0:0.01:4);  %from 0 to 4
+u = @(t) 1.0.*((0<=t)&(t<=4)); %makes unit step function
+f = @(t) exp(-2*t).*cos(4*pi*t);
+g = @(t) f(t).*u(t);
+s=@(t) g(t+1);
+plot(t, g(t+1));
+xlabel('t');
+ylabel('s(t)');
+grid;
+
+%C.3
+t = (0:0.01:4); 
+u = @(t) 1.0.*((0<=t)&(t<=4)); %makes unit step function
+matrix = zeros(401,4);
+
+for i=1:2:7     %i acts as a placeholder for alpha
+    %create function
+    s=@(t)exp(-2).*exp(-i.*t).*cos(4*pi*t).*u(t);
+    plot(t,s(t));
+    xlabel('t');
+    ylabel('s(t)');
+
+    hold on;    %hold off on plotting it on the figure
+end
+
+%Create legends
+legend('i=1','i=3','i=5','i=7');
+hold off;
+
+%C.4
+%the size of the array generated in C.3 for s(t) is 1604
