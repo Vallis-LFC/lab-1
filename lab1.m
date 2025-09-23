@@ -97,7 +97,8 @@
 % grid;
 
 %B.5
-%they produce the same graph (maybe add more explaination)
+%they produce the same triangular function, supported on 
+%[−0.5,3.5] and peaking at t=1.5. They look identical, even though they're obtained through different combinations of shifting and scaling.
 
 %C.1
 % t = (-2:0.01:2);  %from -2 to 2
@@ -142,3 +143,4 @@ hold off;
 %C.4
 
 %the size of the array generated in C.3 for s(t) is 1604
+
