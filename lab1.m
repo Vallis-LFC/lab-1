@@ -44,7 +44,7 @@
 % yticks([0 0.5 1]);
 % grid;
 
-% %B.2        not tested yet
+% %B.2        TESTED
 % t = (-2:0.01:2);  %from -2 to 2
 % u = @(t) 1.0.*((-1<=t)&(t<=2)); %makes unit step function
 % p = @(t) 1.0.*((t>=0)&(t<1));  %f(t)
@@ -140,4 +140,5 @@ legend('i=1','i=3','i=5','i=7');
 hold off;
 
 %C.4
+
 %the size of the array generated in C.3 for s(t) is 1604
